@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="user-form">  
+<h:outputLabel >Kategori başlığı</h:outputLabel>  
+<h:inputText  value="#{PostBean.entitiy.title}" /><br/>  
+<h:commandButton value="kaydet" action="#{PostBean.create()}"/>  
+</h:form>  
+        
+        #{PostBean.Postlist}
+        
+<br/>
+<h:form>
+    <div class="card">
+        <h:dataTable var="c" value="#{PostBean.Postlist}">
+            <h:column headerText="ID">
+                <h:outputText value="#{c.id}" />
+            </h:column>
+
+            <h:column headerText="TİTLE">
+                <h:outputText value="#{c.title}" />
+            </h:column>
+
+            <h:column headerText="CREATED">
+                <h:outputText value="#{c.created}" />
+            </h:column>
+
+            <h:column headerText="UPDATED">
+                <h:outputText value="#{c.updated}" />
+            </h:column>
+            
+            <h:column>
+                <h:commandButton action="#{PostBean.delete(c)}" value="X"/>
+                    
+            </h:column>
+        </h:dataTable>
+    </div>
+</h:form>
+    </h:body>
+</html>
